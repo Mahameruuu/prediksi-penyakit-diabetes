@@ -1,2 +1,10 @@
 age,hypertension,heart_disease,smoking_history,bmi,HbA1c_level,blood_glucose_level,gender,result
 5,1,1,0,9917.355371900827,0.09,0.10999999999999999,1,Tidak Diabetes
+10,0,0,2,13888.888888888889,0.04,0.04,0,Tidak Diabetes
+0.0,1,1,0,133.33333333333334,3.0,80.0,1,Tidak Diabetes
+0.0,1,1,0,133.33333333333334,3.0,80.0,1,Tidak Diabetes
+0.11999999999999998,1,1,0,133.33333333333334,3.0,80.0,1,Tidak Diabetes
+0.0,1,1,0,18.870663376397157,3.0,80.0,1,Tidak Diabetes
+0.0,1,1,0,18.870663376397157,3.0,80.0,1,Tidak Diabetes
+0.0,1,1,0,18.870663376397157,3.0,80.0,1,Tidak Diabetes
+0.0,1,1,0,18.870663376397157,3.0,80.0,1,Tidak Diabetes
