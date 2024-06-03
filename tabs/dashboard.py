@@ -107,23 +107,25 @@ def dashboard(model, scaler):
             bmi = calculate_bmi(height, weight)
             if bmi == 0:
                 st.warning("Tinggi badan tidak boleh nol.")
+            elif bmi > 29.9:
+                st.warning("BMI melebihi nilai maksimum yang diizinkan (29.9).")
             else:
                 st.write(f'BMI yang Dihitung: {bmi:.2f}')
 
-            input_features = np.array([[age, had_hypertension, had_heart_disease, smoking_history, bmi, hemoglobin, blood_glucose, gender]])
+                input_features = np.array([[age, had_hypertension, had_heart_disease, smoking_history, bmi, hemoglobin, blood_glucose, gender]])
 
-            try:
-                scaled_features = scaler.transform(input_features)
-                prediction = model.predict(scaled_features)
-                result = 'Diabetes' if prediction[0] == 1 else 'Tidak Diabetes'
-                st.write(f'Prediksi: {result}')
-                
-                # Save prediction to history
-                prediction_data = pd.DataFrame([[age, had_hypertension, had_heart_disease, smoking_history, bmi, hemoglobin, blood_glucose, gender, result]], 
-                                               columns=['age', 'hypertension', 'heart_disease', 'smoking_history', 'bmi', 'HbA1c_level', 'blood_glucose_level', 'gender', 'result'])
-                save_prediction(prediction_data)
-            except Exception as e:
-                st.error(f"Terjadi kesalahan: {e}")
+                try:
+                    scaled_features = scaler.transform(input_features)
+                    prediction = model.predict(scaled_features)
+                    result = 'Diabetes' if prediction[0] == 1 else 'Tidak Diabetes'
+                    st.write(f'Prediksi: {result}')
+                    
+                    # Save prediction to history
+                    prediction_data = pd.DataFrame([[age, had_hypertension, had_heart_disease, smoking_history, bmi, hemoglobin, blood_glucose, gender, result]], 
+                                                   columns=['age', 'hypertension', 'heart_disease', 'smoking_history', 'bmi', 'HbA1c_level', 'blood_glucose_level', 'gender', 'result'])
+                    save_prediction(prediction_data)
+                except Exception as e:
+                    st.error(f"Terjadi kesalahan: {e}")
         else:
             for msg in errorMsg:
                 st.error(msg)
