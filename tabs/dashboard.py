@@ -27,6 +27,35 @@ def dashboard(decision_tree_model, scaler):
     smoking_history = st.selectbox('Riwayat Merokok', ['Tidak Pernah', 'Bekas Perokok', 'Perokok Aktif'])
     age = st.number_input('Usia', min_value=0.0, max_value=170.0)
 
+    # Checking for minimum value inputs
+    if height == 15.0:
+        st.warning("Tinggi badan berada pada nilai minimum.")
+    if weight == 3.0:
+        st.warning("Berat badan berada pada nilai minimum.")
+    if blood_glucose == 80.0:
+        st.warning("Tingkat glukosa darah berada pada nilai minimum.")
+    if hemoglobin == 3.0:
+        st.warning("Hemoglobin berada pada nilai minimum.")
+    if age == 0.0:
+        st.warning("Usia berada pada nilai minimum.")
+
+    # Checking for maximum value inputs
+    if height > 300.0:
+        st.error("Tinggi badan melebihi nilai maksimum yang diizinkan.")
+        return
+    if weight > 200.0:
+        st.error("Berat badan melebihi nilai maksimum yang diizinkan.")
+        return
+    if blood_glucose > 300.0:
+        st.error("Tingkat glukosa darah melebihi nilai maksimum yang diizinkan.")
+        return
+    if hemoglobin > 10.0:
+        st.error("Hemoglobin melebihi nilai maksimum yang diizinkan.")
+        return
+    if age > 170.0:
+        st.error("Usia melebihi nilai maksimum yang diizinkan.")
+        return
+
     bmi = calculate_bmi(height, weight)
     if bmi == 0:
         st.warning("Tinggi badan tidak boleh nol.")
